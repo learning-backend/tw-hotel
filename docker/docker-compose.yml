@@ -1,0 +1,12 @@
+services:
+  mysql:
+    image: mysql:latest
+    container_name: hotel-mysql
+    volumes:
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 33066:3306
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_ROOT_PASSWORD=hotel
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_general_ci']
